@@ -1,27 +1,14 @@
 import numpy as np
 import cv2 as cv
 
-cap = cv.VideoCapture("E:\\MyPractiseZone\\openCV\\openCV python\\video\\playingVideoFromFile\\testNS.mp4")
+cap = cv.VideoCapture('E:/MyPractiseZone/openCV/openCV python/video/video_file/testNS.mp4')
 
-if (cap.isOpened() == False):
-    print("Error opening video file")
+while True:
+    isTrue,frame = cap.read()
+    cv.imshow('Video', frame)
 
-
-while (cap.isOpened()):
-    ret,frame = cap.read()
-
-    #if frame is read correctly ret is True
-    if not ret:
-        print("Can't receive frame (stream end?). Exiting...")
+    if cv.waitKey(25) & 0xFF==ord('d'):
         break
 
-    if ret == True:
-        cv.imshow('Frame', frame)
-
-    
-    if cv.waitKey(0) & ord('q'):
-        break
-    else:
-        break
 cap.release()
 cv.destroyAllWindows()
